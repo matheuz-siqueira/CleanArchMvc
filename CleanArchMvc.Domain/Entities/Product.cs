@@ -41,7 +41,7 @@ public sealed class Product : Entity
             "Invalid name. Minimum 3 characters");
 
         DomainExceptionValidation.When(string.IsNullOrEmpty(description),
-            "Invalid description. Name is required");
+            "Invalid description. Description is required");
         
         DomainExceptionValidation.When(description.Length < 5, 
             "Invalid description. Minimum 3 characters");
