@@ -1,9 +1,11 @@
+using System.Reflection;
 using CleanArchMvc.Application.Interfaces;
 using CleanArchMvc.Application.Mappings;
 using CleanArchMvc.Application.Services;
 using CleanArchMvc.Domain.Interfaces;
 using CleanArchMvc.Infra.Data.Context;
 using CleanArchMvc.Infra.Data.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +21,7 @@ public static class DependencyInjection
         AddRepositories(services); 
         AddServices(services); 
         AddMapper(services);
+        AddMediator(services);
     }
 
     public static void AddContext(this IServiceCollection services, 
@@ -48,5 +51,10 @@ public static class DependencyInjection
     public static void AddMapper(this IServiceCollection services)
     {
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+    }
+
+    public static void AddMediator(this IServiceCollection services)
+    {
+         services.AddMediatR(Assembly.GetExecutingAssembly());
     }
 }
