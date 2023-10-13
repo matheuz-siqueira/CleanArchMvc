@@ -154,4 +154,14 @@ public class ProductUnitTest1
             .WithMessage("Invalid stock value");
     }
 
+    [Fact]
+    public void CreateProduct_UrlImageNull_NoNullReferenceException()
+    {
+        Action action = () => new Product(1, "Product name", "description", 
+            9.99m, 10, null);
+        
+        action.Should()
+            .NotThrow<NullReferenceException>();
+    }
+
 }
