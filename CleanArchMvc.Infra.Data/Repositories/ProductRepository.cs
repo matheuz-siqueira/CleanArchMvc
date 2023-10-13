@@ -26,16 +26,10 @@ public class ProductRepository : IProductRepository
             .ToListAsync();
     }
 
-    public async Task<Product> GetByCategoryAsync(int? id)
-    {
-        return await _contex.Products.AsNoTracking()
-            .Include(c => c.Category)
-            .SingleOrDefaultAsync(p => p.Id == id);
-    }
-
     public async Task<Product> GetByIdAsync(int? id)
     {
-        return await _contex.Products.FindAsync(id);
+        return await _contex.Products.Include(c => c.Category)
+            .SingleOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<Product> RemoveAsync(Product product)
