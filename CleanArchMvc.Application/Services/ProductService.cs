@@ -28,10 +28,11 @@ public class ProductService : IProductService
        var productQuery = new GetProductsQuery();
        if(productQuery is null)
        {
-            throw new Exception($"Entity could be loaded");
+            throw new Exception($"Entity could be loaded.");
        }
 
-       var result = await _mediator.Send(productQuery);
+       var result = await _mediator.Send(productQuery); 
+
        return _mapper.Map<IEnumerable<ProductDTO>>(result);
     }
 
