@@ -51,10 +51,12 @@ public static class DependencyInjection
     public static void AddMapper(this IServiceCollection services)
     {
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+        services.AddAutoMapper(typeof(DTOToCommandMappingProfile));
     }
 
     public static void AddMediator(this IServiceCollection services)
     {
-         services.AddMediatR(Assembly.GetExecutingAssembly());
+        var assembly = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
+        services.AddMediatR(assembly);  
     }
 }
