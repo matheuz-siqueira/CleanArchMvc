@@ -17,6 +17,7 @@ public class ProductUnitTest1
             .NotThrow<CleanArchMvc.Domain.Validation.DomainExceptionValidation>();
     }
 
+    [Fact]
     public void CreateProduct_NegativeIdValue_DomainException()
     {
         Action action = () => new Product(-1, "Product name", "description", 
@@ -58,7 +59,7 @@ public class ProductUnitTest1
         action.Should()
             .Throw<CleanArchMvc.Domain.Validation.DomainExceptionValidation>();
     }
-     [Fact]
+    [Fact]
     public void CreateProduct_ShortDescriptionValue_DomainException()
     {
         Action action = () => new Product(1, "Product name", "de", 
