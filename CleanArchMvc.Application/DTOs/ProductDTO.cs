@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using CleanArchMvc.Domain.Entities;
 
 namespace CleanArchMvc.Application.DTOs;
@@ -30,6 +31,7 @@ public class ProductDTO
     [DisplayName("Product Image")]
     public string Image { get; set; }
 
+    [JsonIgnore]
     public Category Category { get; set; }
     [DisplayName("Categories")]
     public int CategoryId { get; set; }   
