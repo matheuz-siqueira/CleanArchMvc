@@ -2,12 +2,14 @@ using CleanArchMvc.Application.Interfaces;
 using CleanArchMvc.Application.DTOs;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CleanArchMvc.API.Controllers;
 
 
 [Produces("application/json")]
 [Route("api/categories")]
+[Authorize]
 public class CategoryController : ControllerBase
 {
     private readonly ICategoryService _service;
